@@ -1,0 +1,83 @@
+models:
+  Log:
+    userId: id foreign:Users.id
+    oldValue: varchar:255
+    newValue: varchar:255
+  Role: 
+    title: varchar:25 unique 
+    permissions: varchar:25 
+  Type: 
+    title: varchar:50 unique 
+  Provider: 
+    title: varchar:50 unique 
+    phone: varchar:50 
+    code: varchar:50 
+    inn: varchar:25 unique 
+    certificateNumber: integer 
+    adress: varchar:150 
+  Waybill: 
+    title: varchar:50 unique 
+  Contract: 
+    title: varchar:100 unique 
+    date: timestamps 
+    productQty: integer 
+    priceSum: double 
+    providerId: id foreign:Provider.id 
+  Warehouse: 
+    title: varchar:100 unique 
+  Product: 
+    title: varchar:100 unique 
+    price: decimal 
+    createdAt: timestamps 
+    qty: double 
+    unit: varchar:10 
+    providerId: id foreign:Provider.id 
+    typeId: id foreign:Type.id 
+    waybillId: id foreign:Waybill.id 
+    contractId: id foreign:Contract.id 
+    warehouseId: id foreign:Warehouse.id 
+    snippedUserId: id foreign:User.id 
+  Transport: 
+    title: varchar:100 unique 
+  Detail: 
+    vendorCode: varchar:50 unique 
+    title: varchar:100 
+    qty: integer 
+    usedQty: integer 
+    writtenOffQty: integer 
+  DetailsCard: 
+    date: timestamps 
+    document: varchar:100 
+    qty: double 
+    unit: varchar:10 
+    detailId: id foreign:Detail.id 
+    transportId: id foreign:Transport.id 
+  DetailsDictionary: 
+    qty: double 
+    unit: varchar:10 
+    transportId: id foreign:Transport.id 
+    detailId: id foreign:Detail.id 
+
+controllers: 
+  Role: 
+    resource: web 
+  Type: 
+    resource: web 
+  Provider: 
+    resource: web 
+  Waybill: 
+    resource: web 
+  Contract: 
+    resource: web 
+  Warehouse: 
+    resource: web 
+  Product: 
+    resource: web 
+  Transport: 
+    resource: web 
+  Detail: 
+    resource: web 
+  DetailsCard: 
+    resource: web 
+  DetailsDictionary: 
+    resource: web
