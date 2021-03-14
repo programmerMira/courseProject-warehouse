@@ -28,10 +28,8 @@ class CreateProductsTable extends Migration
             $table->string('vendorCode')->nullable();
             $table->integer('usedQty')->nullable();
             $table->integer('writtenOffQty')->nullable();
-            $table->integer('providerId')->bigInteger()->nullable();
-            $table->foreign('providerId')->references('id')->on('providers')->onDelete('set null');
-            $table->integer('snippedUserId')->bigInteger()->nullable();
-            $table->foreign('snippedUserId')->references('id')->on('users')->onDelete('set null');
+            $table->foreignId('providerId')->constrained('providers');
+            $table->foreignId('snippedUserId')->constrained('users');
             $table->timestamps();
             $table->softDeletes();
         });

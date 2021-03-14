@@ -35,6 +35,6 @@ class CreateDetailsDictionariesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('details_dictionaries');
+        //Schema::dropIfExists('details_dictionaries');
     }
 }
